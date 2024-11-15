@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Ctrl</title>
+    </head>
+    <body>
+        <h1 id="h">Web Ctrl</h1>
+        
+        <label for="inp">Enter link:</label>
+        <input type="text" id="inp" value="https://">
+        <br><br>
+        <a id="lnk" href="https://">https://</a>
+
+        <br><br>
+
+        <label for="cinp">Enter evaluable:</label>
+        <input type="text" id="cinp">
+        <button id="ctrig">Run Evaluable</button>
+        <p id="cout">[Output Here]</p>
+    </body>
+    <script>
+        const out = document.getElementById("lnk");
+        function hlink(event) {
+            const link = event.target.value;
+            out.textContent = link;
+            out.href = link;
+            console.log(link);
+        }
+        const inp = document.getElementById("inp");
+        inp.oninput = hlink;
+        inp.onchange = hlink;
+
+        const cinp = document.getElementById("cinp");
+        const cout = document.getElementById("cout");
+        function heval(event) {
+            cout.textContent = eval(cinp.value);
+            console.log(cout.textContent);
+        }
+        const ctrig = document.getElementById("ctrig");
+        ctrig.onclick = heval;
+        
+        document.getElementById("h").textContent += " (Loaded)";
+    </script>
+</html>
